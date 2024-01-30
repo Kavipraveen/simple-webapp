@@ -1,0 +1,12 @@
+steps:
+  # Checkout source code from GitHub
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/Kavipraveen/simple-webapp.git']
+
+  # Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/usecase4-ci-cd/usecase4cicd', '.']
+ 
+  # Push image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/usecase4-ci-cd/usecase4cicd']
