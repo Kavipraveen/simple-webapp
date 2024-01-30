@@ -11,7 +11,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 # Copy all project files to the working directory
-COPY . /code
+COPY . .
 
 EXPOSE 8080
 
