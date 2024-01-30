@@ -1,6 +1,6 @@
-FROM ubuntu:20.04
+FROM python:3.11.7-bookworm
 
-RUN apt-get update && apt-get install -y python3 python3-pip
+WORKDIR /code
 
 RUN pip3 install --upgrade pip
 
@@ -11,6 +11,8 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
 # Copy all project files to the working directory
-COPY . /opt/
+COPY . /app
 
-ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080
+EXPOSE 8080
+
+CMD ["python", "app.py"]
