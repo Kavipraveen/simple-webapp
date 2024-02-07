@@ -11,3 +11,18 @@ steps:
   # Push image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/usecase-4-ci-cd/usecase4cicd/webapp:latest']
+
+    - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run",
+        "deploy",
+        "simple-webapp",
+        "--image",
+        "us-central1-docker.pkg.dev/usecase-4-ci-cd/usecase4cicd/webapp:latest",
+        "--region",
+        "us-central1",
+        "--platform",
+        "managed",
+        "--allow-unauthenticated",
+      ]
