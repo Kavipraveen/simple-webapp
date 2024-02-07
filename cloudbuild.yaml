@@ -18,7 +18,7 @@ steps:
       [
         "run",
         "deploy",
-        "simple-webapp",
+        "webapp-deploy",
         "--image",
         "us-central1-docker.pkg.dev/usecase-4-ci-cd/usecase4cicd/webapp:latest",
         "--region",
