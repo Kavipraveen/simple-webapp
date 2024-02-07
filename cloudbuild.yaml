@@ -11,18 +11,3 @@ steps:
   # Push image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/usecase-4-ci-cd/usecase4cicd/webapp:latest']
-
-  # Entrypoint, timeout and environment variables
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    timeout: 240s
-    args: ['compute', 'instances', 
-           'create-with-container', 'my-vm-name',
-           '--container-image', 
-           'us-central1-docker.pkg.dev/usecase-4-ci-cd/usecase4cicd/webapp:latest']
-    env:
-      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-
-build:  
-    logging: CLOUD_LOGGING_ONLY
